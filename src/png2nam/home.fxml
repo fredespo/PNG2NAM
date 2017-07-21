@@ -3,6 +3,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.CheckBox?>
 <GridPane fx:controller="png2nam.Controller"
           xmlns:fx="http://javafx.com/fxml" alignment="TOP_LEFT" hgap="10" vgap="10">
 
@@ -20,25 +21,28 @@
                         maxWidth="500"/>  
             </VBox>  
 
-            <Button text="Choose"
-                    onAction="#handleChooseImage"/>          
+            <Button text="Choose" onAction="#handleChooseImage"/>
         </HBox>
 
 
-        <HBox spacing="10">
+        <VBox>
+            <HBox spacing="10">
 
-            <Label text="Output Directory:" style="-fx-font-size: 20px"/>
+                <Label text="Output Directory:" style="-fx-font-size: 20px"/>
 
-            <VBox alignment="center">
-                <Label fx:id="outputDirectoryName"
-                    text=""
-                     maxWidth="500"/>
-            </VBox>       
+                <VBox alignment="center">
+                    <Label fx:id="outputDirectoryName"
+                        text=""
+                         maxWidth="500"/>
+                </VBox>
 
-            <Button text="Choose"
-                    onAction="#handleChooseOutputDir"/>       
+                <Button text="Choose" onAction="#handleChooseOutputDir" fx:id="chooseOutputDir" disable="true"/>
 
-        </HBox>
+            </HBox>
+
+            <CheckBox text="Same as Input Image Directory" fx:id="outputSameAsInput" selected="true" onAction="#handleSetOutputDirectory">
+            </CheckBox>
+        </VBox>
 
 
         <HBox spacing="10">
