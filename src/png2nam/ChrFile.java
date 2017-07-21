@@ -1,16 +1,9 @@
 package png2nam;
 
-import javafx.scene.effect.ImageInput;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
-
-import java.awt.image.IndexColorModel;
 import java.io.*;
 import java.util.Arrays;
-
-import javax.imageio.ImageIO;
-import javax.swing.JFrame;
 import java.lang.Math;
 import java.util.ArrayList;
 
