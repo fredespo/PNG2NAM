@@ -23,8 +23,11 @@ public class Controller {
     @FXML private Button chooseOutputDir;
 
     //Choose input image
-    public void handleChooseImage(){
+    public void handleChooseImage()
+    {
         FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File(inputImageName.getText()).getParentFile());
+
 
         fileChooser.setTitle("Open Input Image (256 x 240)");
         fileChooser.getExtensionFilters().addAll(
