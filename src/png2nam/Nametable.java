@@ -15,6 +15,9 @@ public class Nametable
     private static int[][] allTiles = new int[32][30];
 
 
+
+    private Nametable(){}
+
     public static void Init()
     {
         attributes = new int[16][15];

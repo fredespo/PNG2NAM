@@ -36,7 +36,7 @@ public class Controller {
         File file = fileChooser.showOpenDialog(Main.png2nam.PRIMARY_STAGE);
         if(file!=null)
         {
-            if(Main.png2nam.checkImage(file.getAbsolutePath()))
+            if(Main.png2nam.checkInputImage(file.getAbsolutePath()))
             {
                 inputImageName.setText(file.getAbsolutePath());
                 if (outputSameAsInput.isSelected())

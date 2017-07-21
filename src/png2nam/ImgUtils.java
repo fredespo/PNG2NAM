@@ -78,4 +78,17 @@ public class ImgUtils
 
         return newImage;
     }
+
+    private ImgUtils()
+    {
+    }
+
+    public static void saveImage(BufferedImage img, String savepath)
+    {
+        File outputFile = new File(savepath);
+
+        try{
+            ImageIO.write(img, "png", outputFile);   
+        }catch(IOException e) {}
+    }
 }

@@ -1,8 +1,16 @@
 package png2nam;
 
+import javafx.scene.effect.ImageInput;
+
 import java.awt.*;
+import java.awt.image.BufferedImage;
+
+import java.awt.image.IndexColorModel;
 import java.io.*;
 import java.util.Arrays;
+
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
 import java.lang.Math;
 import java.util.ArrayList;
 
@@ -12,7 +20,7 @@ public class ChrFile
 {
     private static File outputCHRfile;
     private static OutputStream outputCHRstream;
-    private static ArrayList<Color[][]> tiles = new ArrayList<>(0);
+    private static ArrayList<Color[][]> tiles = new ArrayList<Color[][]>(0);
     private static int numOfTiles = 0;
 
 
@@ -23,7 +31,7 @@ public class ChrFile
     {
         outputCHRfile = null;
         outputCHRstream = null;
-        tiles = new ArrayList<>(0);
+        tiles = new ArrayList<Color[][]>(0);
         numOfTiles = 0;
     }
 

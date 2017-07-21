@@ -2,11 +2,17 @@ package png2nam;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+
+import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
-
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.*;
+import java.io.File;
+import java.io.*;
 
 public class PNG2NAM 
 {
@@ -23,7 +29,7 @@ public class PNG2NAM
         Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
         PRIMARY_STAGE = primaryStage;
         primaryStage.setTitle("PNG2NAM");
-        primaryStage.setScene(new Scene(root,1100,600));
+        primaryStage.setScene(new Scene(root,1000,470));
         primaryStage.setResizable(true);
         primaryStage.show();
     }
@@ -45,7 +51,7 @@ public class PNG2NAM
         PRIMARY_STAGE.show();
     }
 
-    public boolean checkImage(String inputImagePath)
+    public boolean checkInputImage(String inputImagePath)
     {
         if(inputImagePath=="")
         {
@@ -58,14 +64,19 @@ public class PNG2NAM
 
         inputImg = ImgUtils.getImageData(inputImagePath);
 
+        String inputDir = inputImagePath.replace(".png","");
+        ImgUtils.saveImage(inputImg,  inputDir + "_indexedImage.png");
+
+
         if(inputImg.getWidth() != 256 || inputImg.getHeight() != 240)
         {
             try{
-                exportStatus="Error: Input image must be 256px by 240px";
+                exportStatus="Error: Input image must be 256 by 240";
                 showPopup("PNG2NAM ERROR","You must select a 256px by 240px image!");
             }catch(Exception e){System.out.println(e);}
             return false;
         }
+
         return true;
     }
 
@@ -75,15 +86,34 @@ public class PNG2NAM
         ChrFile.Init();
         Nametable.Init();
 
-        if(!checkImage(inputImagePath)) return;
+        if(!checkInputImage(inputImagePath)) return;
+
+        if(outputDir.length()==0)
+        {
+            try{
+                exportStatus="Error: Select output directory";
+                showPopup("PNG2NAM ERROR","You must select an output directory!");
+            }catch(Exception e){System.out.println(e);}
+            return;
+        }
+
+        if(outputName.length()==0)
+        {
+            try{
+                exportStatus="Error: Choose an export name";
+                showPopup("PNG2NAM ERROR","You must type an export name!");
+            }catch(Exception e){System.out.println(e);}
+            return;
+        }
 
         PaletteManager.setMainColor(inputImg);
 
-        Color[][] metaTile;
-        Color[][] tile;
+        Color[][] metaTile = new Color[16][16];
+        Color[][] tile = new Color[8][8];
         ChrFile.setCHR(outputName, outputDir);
         Nametable.setNAM(outputName, outputDir);
         int attr;
+        Color[] pal = new Color[4];
 
 
         for(int metaTileY=0; metaTileY<240; metaTileY+=16)

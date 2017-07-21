@@ -27,56 +27,62 @@ public class PaletteManager
         ArrayList<Color> allColors = new ArrayList<Color>(0);
         int numOfColors = 0;
         ArrayList<Integer> colorFreq = new ArrayList<Integer>(0);
-        Color[] pal;
-        //Color mainColor = new Color(0,0,0);
+        Color[] pal = new Color[4];
+        Color mainColor = new Color(0,0,0);
+        int palLength = 0;
+        Color currentColor;
 
+        
         for(int y=0; y<240; y+=16)
         {
             for(int x=0; x<256; x+=16)
             {
                 pal = PaletteManager.getPalOf(ImgUtils.getBlockOf(img, x, y, 16, 16));
+                palLength = GetPalLength(pal);
 
-                for(int i=0; i<4; i++)
+                
+                if(palLength==4)
                 {
-                    if(pal[i]==null) break;
-
-                    if(numOfColors == 0)
+                    for(int n=0; n<4; n++)
                     {
-                        allColors.add(pal[i]);
-                        colorFreq.add(new Integer(1));
-                        numOfColors++;
-                    }
-                    else
-                    {
-                        for (int j = 0; j < numOfColors; j++)
+                        currentColor = pal[n];
+                        
+                        
+                        for(int g=0; g<=numOfColors; g++)
                         {
-                            if (pal[i].equals(allColors.get(j)))
+                            if(g < allColors.size() && allColors.get(g).equals(currentColor)) 
                             {
-                                colorFreq.set(i, colorFreq.get(i)+1);
+                                colorFreq.set(g, colorFreq.get(g) + 1);
                                 break;
                             }
-
-                            if (j == numOfColors - 1)
+                            
+                            if(g == numOfColors)
                             {
-                                allColors.add(pal[i]);
+                                allColors.add(currentColor);
                                 colorFreq.add(new Integer(1));
                                 numOfColors++;
+                                break;
                             }
                         }
+                        
                     }
                 }
+                
             }
         }
+        
 
-
-        int mainColIndex = 0;
-
-        for(int i=0; i<numOfColors; i++)
+        if(numOfColors > 0)
         {
-            if(colorFreq.get(i) > colorFreq.get(mainColIndex)) mainColIndex = i;
-        }
+            int currentColorIndex = 0;
+            for(int i=0; i<numOfColors; i++)
+            {
+                if(colorFreq.get(i) > colorFreq.get(currentColorIndex)) currentColorIndex = i; 
+            }
 
-        Color mainColor = allColors.get(mainColIndex);
+            mainColor = allColors.get(currentColorIndex);
+        }
+        
 
         for(int palNum=0; palNum<4; palNum++)
         {
