@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="PNG2NAM">
+    <output-path>$PROJECT_DIR$/out/artifacts/PNG2NAM</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="sample.Main" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="JavaFXApp.jar">
+        <element id="module-output" name="PNG2NAM" />
+      </element>
+    </root>
+  </artifact>
+</component>
