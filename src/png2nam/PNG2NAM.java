@@ -14,6 +14,7 @@ public class PNG2NAM
     public Stage POPUP_STAGE;
     public String popupMessage = "";
     public String exportStatus="";
+    private BufferedImage inputImg;
 
     public PNG2NAM(){};
     
@@ -44,6 +45,29 @@ public class PNG2NAM
         PRIMARY_STAGE.show();
     }
 
+    public boolean checkImage(String inputImagePath)
+    {
+        if(inputImagePath=="")
+        {
+            try{
+                exportStatus="Error: Select input image";
+                showPopup("PNG2NAM ERROR","You must select an input image!");
+            }catch(Exception e){System.out.println(e);}
+            return false;
+        }
+
+        inputImg = ImgUtils.getImageData(inputImagePath);
+
+        if(inputImg.getWidth() != 256 || inputImg.getHeight() != 240)
+        {
+            try{
+                exportStatus="Error: Input image must be 256px by 240px";
+                showPopup("PNG2NAM ERROR","You must select a 256px by 240px image!");
+            }catch(Exception e){System.out.println(e);}
+            return false;
+        }
+        return true;
+    }
 
     public void StartConversion(String inputImagePath, String outputName, String outputDir)
     {
@@ -51,43 +75,7 @@ public class PNG2NAM
         ChrFile.Init();
         Nametable.Init();
 
-        if(inputImagePath=="")
-        {
-            try{
-                exportStatus="Error: Select input image";
-                showPopup("PNG2NAM ERROR","You must select an input image!");
-            }catch(Exception e){System.out.println(e);}
-            return;
-        }
-
-        BufferedImage inputImg = ImgUtils.getImageData(inputImagePath);
-
-        if(inputImg.getWidth() != 256 || inputImg.getHeight() != 240)
-        {
-            try{
-                exportStatus="Error: Input image must be 256 by 240";
-                showPopup("PNG2NAM ERROR","You must select a 256px by 240px image!");
-            }catch(Exception e){System.out.println(e);}
-            return;
-        }
-
-        if(outputDir.length()==0)
-        {
-            try{
-                exportStatus="Error: Select output directory";
-                showPopup("PNG2NAM ERROR","You must select an output directory!");
-            }catch(Exception e){System.out.println(e);}
-            return;
-        }
-
-        if(outputName.length()==0)
-        {
-            try{
-                exportStatus="Error: Choose an export name";
-                showPopup("PNG2NAM ERROR","You must type an export name!");
-            }catch(Exception e){System.out.println(e);}
-            return;
-        }
+        if(!checkImage(inputImagePath)) return;
 
         PaletteManager.setMainColor(inputImg);
 

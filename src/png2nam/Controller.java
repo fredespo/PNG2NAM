@@ -4,14 +4,12 @@
 package png2nam;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import javafx.stage.DirectoryChooser;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+
 import java.io.File;
-import javafx.scene.control.TextField;
 
 public class Controller {
 
@@ -21,13 +19,15 @@ public class Controller {
     @FXML private Label exportStatus;
     @FXML private CheckBox outputSameAsInput;
     @FXML private Button chooseOutputDir;
+    @FXML private Button exportButton;
+    @FXML private Button chrChoose;
+    @FXML private Label chrFileDir;
 
     //Choose input image
     public void handleChooseImage()
     {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setInitialDirectory(new File(inputImageName.getText()).getParentFile());
-
 
         fileChooser.setTitle("Open Input Image (256 x 240)");
         fileChooser.getExtensionFilters().addAll(
@@ -36,14 +36,20 @@ public class Controller {
         File file = fileChooser.showOpenDialog(Main.png2nam.PRIMARY_STAGE);
         if(file!=null)
         {
-            inputImageName.setText(file.getAbsolutePath());
-            if(outputSameAsInput.isSelected()) outputDirectoryName.setText(new File(inputImageName.getText()).getParent());
-            String fileName = new File(inputImageName.getText()).getName();
-            try
+            if(Main.png2nam.checkImage(file.getAbsolutePath()))
             {
-                exportName.setText(fileName.substring(0,fileName.length()-4));
+                inputImageName.setText(file.getAbsolutePath());
+                if (outputSameAsInput.isSelected())
+                    outputDirectoryName.setText(new File(inputImageName.getText()).getParent());
+                String fileName = new File(inputImageName.getText()).getName();
+                try
+                {
+                    exportName.setText(fileName.substring(0, fileName.length() - 4));
+                } catch (StringIndexOutOfBoundsException e) {}
+                exportButton.setDisable(false);
+                exportStatus.setText("...");
             }
-            catch(StringIndexOutOfBoundsException e){}
+            else exportStatus.setText(Main.png2nam.exportStatus);
         }
     }
 
@@ -73,5 +79,32 @@ public class Controller {
     {
         Main.png2nam.StartConversion(inputImageName.getText(), exportName.getText(), outputDirectoryName.getText());
         exportStatus.setText(Main.png2nam.exportStatus);
+    }
+
+    public void chrAddToOption()
+    {
+        chrChoose.setDisable(false);
+    }
+
+    public void chrCreateOption()
+    {
+        chrChoose.setDisable(true);
+    }
+
+    public void chooseChr()
+    {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File(inputImageName.getText()).getParentFile());
+        fileChooser.setTitle("Select CHR");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("CHR", "*.chr")
+        );
+
+        File file = fileChooser.showOpenDialog(Main.png2nam.PRIMARY_STAGE);
+
+        if(file != null)
+        {
+            chrFileDir.setText(file.getAbsolutePath());
+        }
     }
 }

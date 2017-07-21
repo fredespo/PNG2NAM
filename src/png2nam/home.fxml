@@ -4,6 +4,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.geometry.Insets?>
 <GridPane fx:controller="png2nam.Controller"
           xmlns:fx="http://javafx.com/fxml" alignment="TOP_LEFT" hgap="10" vgap="10">
 
@@ -53,25 +56,52 @@
         </HBox>
 
 
-         <HBox spacing="10">
+        <HBox spacing="10">
+
+            <Label text="CHR:" style="-fx-font-size: 20px"/>
+
+            <VBox spacing="10">
+                <padding><Insets top="7" right="0" bottom="0" left="0"/></padding>
+                <fx:define>
+                    <ToggleGroup fx:id="chrOption"/>
+                </fx:define>
+
+                <RadioButton text="Create new CHR" toggleGroup="$chrOption" selected="true" onAction="#chrCreateOption"></RadioButton>
+
+                <HBox spacing="10">
+                    <RadioButton text="Add to existing CHR: " toggleGroup="$chrOption" onAction="#chrAddToOption"></RadioButton>
+                    <Label fx:id="chrFileDir"></Label>
+                    <Button text="Choose" disable="true" fx:id="chrChoose" onAction="#chooseChr"> </Button>
+                </HBox>
+
+            </VBox>
+
+        </HBox>
+
+
+         <VBox>
 
          <Button text="Export"
                 GridPane.rowIndex="0"
                 GridPane.columnIndex="3"
                 onAction="#handleExport"
-                style="-fx-font-size: 20px"/>
+                style="-fx-font-size: 20px"
+                disable="true"
+                fx:id="exportButton"/>
 
-          <VBox alignment="center">       
-            <Label text="Export Status: " 
-                    style="-fx-font-size: 20px"/>
-          </VBox>
+          <HBox>
+              <VBox alignment="center">
+                <Label text="Export Status: "
+                        style="-fx-font-size: 20px"/>
+              </VBox>
 
-         <VBox alignment="center">
-            <Label text="..."
-                    fx:id="exportStatus"/>
+             <VBox alignment="center">
+                <Label text="..."
+                        fx:id="exportStatus"/>
+             </VBox>
+          </HBox>
+
          </VBox>
-
-         </HBox>
 
 
     </VBox>    
