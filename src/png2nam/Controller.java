@@ -84,11 +84,13 @@ public class Controller {
     public void chrAddToOption()
     {
         chrChoose.setDisable(false);
+        chrFileDir.setOpacity(1.0);
     }
 
     public void chrCreateOption()
     {
         chrChoose.setDisable(true);
+        chrFileDir.setOpacity(0.5);
     }
 
     public void chooseChr()

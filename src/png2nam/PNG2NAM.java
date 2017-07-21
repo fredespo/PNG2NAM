@@ -23,7 +23,7 @@ public class PNG2NAM
         Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
         PRIMARY_STAGE = primaryStage;
         primaryStage.setTitle("PNG2NAM");
-        primaryStage.setScene(new Scene(root,800,470));
+        primaryStage.setScene(new Scene(root,1100,600));
         primaryStage.setResizable(true);
         primaryStage.show();
     }
