@@ -1,0 +1,1 @@
+More examples of a tile being assigned the wrong palette bc it matches other tiles. Probably the result of a palette being changed upon incorporation into palette collection without initiating corresponding change in tile. 
