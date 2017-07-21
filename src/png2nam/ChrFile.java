@@ -59,6 +59,24 @@ public class ChrFile
         addToCHR(tileData, palData);
     }
 
+    private static int[] getHex(Color[][] tileData, Color[] palData)
+    {
+        int[] values = new int[16];
+
+        for(int y=0; y<8; y++)
+        {
+            for(int x=0; x<8; x++)
+            {
+                int colorNum = getColorNum(tileData[x][y], palData);
+
+                if( colorNum == 1 || colorNum == 3) values[y] += Math.pow(2,7-x);
+
+                if( colorNum == 2 || colorNum == 3) values[y+8] += Math.pow(2,7-x);
+            }
+        }
+        return values;
+    }
+
     
     //determine if a tile is already present in the CHR
     private static boolean isTileDuplicate(Color[][] tileToBeAdded)
@@ -89,20 +107,7 @@ public class ChrFile
     //add a tile to the hex data (each row in tile gets a hex value representing the pixels)
     private static void addToCHR(Color[][] tileData, Color[] pal)
     {
-        int[] values = new int[16];
-
-        for(int y=0; y<8; y++)
-        {
-            for(int x=0; x<8; x++)
-            {
-                int colorNum = getColorNum(tileData[x][y], pal);
-
-                if( colorNum == 1 || colorNum == 3) values[y] += Math.pow(2,7-x);
-
-                if( colorNum == 2 || colorNum == 3) values[y+8] += Math.pow(2,7-x);
-            }
-        }
-        addToHex(values);
+        addToHex(getHex(tileData,pal));
     }
 
 
