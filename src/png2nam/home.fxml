@@ -1,8 +1,4 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.TextField?>
 
 <?import javafx.scene.control.Button?>
@@ -43,31 +39,6 @@
                     onAction="#handleChooseOutputDir"/>       
 
         </HBox>
-
-
-
-        <HBox spacing="10">
-
-            <Label text="Export Options:" style="-fx-font-size: 20px"/>
-
-            <VBox spacing="10">
-
-                <CheckBox text="CHR"
-                          selected="true"
-                          fx:id="exportCHR"/>
-
-                <CheckBox text="Nametable"
-                          selected="true"
-                          fx:id="exportNAM"/>            
-                          
-                <CheckBox text="Palette"
-                          selected="true"
-                          fx:id="exportPAL"/>          
-
-            </VBox>
-
-        </HBox>
-
 
 
         <HBox spacing="10">

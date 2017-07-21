@@ -45,7 +45,7 @@ public class PNG2NAM
     }
 
 
-    public void StartConversion(String inputImagePath, boolean exportCHR, boolean exportNAM, boolean exportPAL, String outputName, String outputDir)
+    public void StartConversion(String inputImagePath, String outputName, String outputDir)
     {
         PaletteManager.Init();
         ChrFile.Init();
@@ -79,14 +79,6 @@ public class PNG2NAM
             }catch(Exception e){System.out.println(e);}
             return;
         }
-        if(!exportCHR && !exportNAM && !exportPAL)
-        {
-            try{
-                exportStatus="Error: Select export option";
-                showPopup("PNG2NAM ERROR","You must select at least one export option!");
-            }catch(Exception e){System.out.println(e);}
-            return;
-        }
 
         if(outputName.length()==0)
         {
@@ -101,8 +93,8 @@ public class PNG2NAM
 
         Color[][] metaTile = new Color[16][16];
         Color[][] tile = new Color[8][8];
-        if(exportCHR) ChrFile.setCHR(outputName, outputDir);
-        if(exportNAM) Nametable.setNAM(outputName, outputDir);
+        ChrFile.setCHR(outputName, outputDir);
+        Nametable.setNAM(outputName, outputDir);
         int attr;
         Color[] pal = new Color[4];
 
@@ -114,7 +106,7 @@ public class PNG2NAM
                 metaTile = ImgUtils.getBlockOf(inputImg, metaTileX, metaTileY, 16, 16);
                 attr = PaletteManager.getAttr(metaTile);
 
-                if(exportNAM) Nametable.addAttr(attr);
+                Nametable.addAttr(attr);
 
                 for(int tileY=0; tileY<16; tileY+=8)
                 {
@@ -122,16 +114,16 @@ public class PNG2NAM
                     {
                         tile = ImgUtils.getBlockOf(metaTile, tileX, tileY, 8, 8);
 
-                        if(exportCHR) ChrFile.addTile(tile, PaletteManager.pals[attr]);
-                        if(exportNAM) Nametable.addTile(tile, metaTileX+tileX, metaTileY+tileY);
+                        ChrFile.addTile(tile, PaletteManager.pals[attr]);
+                        Nametable.addTile(tile, metaTileX+tileX, metaTileY+tileY);
                     }
                 }
             }
         }
 
-        if(exportCHR) ChrFile.padCHR();
-        if(exportNAM) Nametable.finalizeNam();
-        if(exportPAL) PaletteManager.exportPalData(outputName, outputDir);
+        ChrFile.padCHR();
+        Nametable.finalizeNam();
+        PaletteManager.exportPalData(outputName, outputDir);
 
         exportStatus="Conversion complete!";
     }

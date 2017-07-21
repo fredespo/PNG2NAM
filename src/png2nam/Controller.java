@@ -17,9 +17,6 @@ public class Controller {
     @FXML private Label inputImageName;
     @FXML private Label outputDirectoryName;
     @FXML private TextField exportName;
-    @FXML private CheckBox exportCHR;
-    @FXML private CheckBox exportNAM;
-    @FXML private CheckBox exportPAL;
     @FXML private Label exportStatus;
 
     //Choose input image
@@ -46,7 +43,7 @@ public class Controller {
     //export files
     public void handleExport(ActionEvent actionEvent)
     {
-        Main.png2nam.StartConversion(inputImageName.getText(), exportCHR.isSelected(), exportNAM.isSelected(), exportPAL.isSelected(), exportName.getText(), outputDirectoryName.getText());
+        Main.png2nam.StartConversion(inputImageName.getText(), exportName.getText(), outputDirectoryName.getText());
         exportStatus.setText(Main.png2nam.exportStatus);
     }
 }
