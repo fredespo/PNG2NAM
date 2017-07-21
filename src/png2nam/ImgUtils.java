@@ -79,10 +79,6 @@ public class ImgUtils
         return newImage;
     }
 
-    private ImgUtils()
-    {
-    }
-
     public static void saveImage(BufferedImage img, String savepath)
     {
         File outputFile = new File(savepath);

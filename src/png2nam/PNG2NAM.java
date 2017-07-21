@@ -60,7 +60,7 @@ public class PNG2NAM
         inputImg = ImgUtils.getImageData(inputImagePath);
 
         String inputDir = inputImagePath.replace(".png","");
-        ImgUtils.saveImage(inputImg,  inputDir + "_indexedImage.png");
+        //ImgUtils.saveImage(inputImg,  inputDir + "_indexedImage.png");
 
 
         if(inputImg.getWidth() != 256 || inputImg.getHeight() != 240)
