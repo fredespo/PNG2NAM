@@ -91,12 +91,11 @@ public class PNG2NAM
 
         PaletteManager.setMainColor(inputImg);
 
-        Color[][] metaTile = new Color[16][16];
-        Color[][] tile = new Color[8][8];
+        Color[][] metaTile;
+        Color[][] tile;
         ChrFile.setCHR(outputName, outputDir);
         Nametable.setNAM(outputName, outputDir);
         int attr;
-        Color[] pal = new Color[4];
 
 
         for(int metaTileY=0; metaTileY<240; metaTileY+=16)

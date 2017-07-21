@@ -27,7 +27,7 @@ public class PaletteManager
         ArrayList<Color> allColors = new ArrayList<Color>(0);
         int numOfColors = 0;
         ArrayList<Integer> colorFreq = new ArrayList<Integer>(0);
-        Color[] pal = new Color[4];
+        Color[] pal;
         //Color mainColor = new Color(0,0,0);
 
         for(int y=0; y<240; y+=16)

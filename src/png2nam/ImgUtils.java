@@ -78,8 +78,4 @@ public class ImgUtils
 
         return newImage;
     }
-
-    private ImgUtils()
-    {
-    }
 }

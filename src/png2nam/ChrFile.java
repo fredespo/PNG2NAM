@@ -12,7 +12,7 @@ public class ChrFile
 {
     private static File outputCHRfile;
     private static OutputStream outputCHRstream;
-    private static ArrayList<Color[][]> tiles = new ArrayList<Color[][]>(0);
+    private static ArrayList<Color[][]> tiles = new ArrayList<>(0);
     private static int numOfTiles = 0;
 
 
@@ -23,7 +23,7 @@ public class ChrFile
     {
         outputCHRfile = null;
         outputCHRstream = null;
-        tiles = new ArrayList<Color[][]>(0);
+        tiles = new ArrayList<>(0);
         numOfTiles = 0;
     }
 

@@ -33,8 +33,4 @@ public class ColorUtils
 
         return result;
     }
-
-    private ColorUtils()
-    {
-    }
 }
