@@ -110,7 +110,7 @@ public class PNG2NAM
 
         Color[][] metaTile = new Color[16][16];
         Color[][] tile = new Color[8][8];
-        ChrFile.setCHR(outputName, outputDir);
+        ChrFile.setCHR(outputName, outputDir, Controller.isCreateCHR());
         Nametable.setNAM(outputName, outputDir);
         int attr;
         Color[] pal = new Color[4];

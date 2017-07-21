@@ -7,16 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/png2nam/ChrFile.java" afterPath="$PROJECT_DIR$/src/png2nam/ChrFile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/png2nam/ColorUtils.java" afterPath="$PROJECT_DIR$/src/png2nam/ColorUtils.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/png2nam/Controller.java" afterPath="$PROJECT_DIR$/src/png2nam/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/png2nam/ControllerPopup.java" afterPath="$PROJECT_DIR$/src/png2nam/ControllerPopup.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/png2nam/ImgUtils.java" afterPath="$PROJECT_DIR$/src/png2nam/ImgUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/png2nam/Main.java" afterPath="$PROJECT_DIR$/src/png2nam/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/png2nam/Nametable.java" afterPath="$PROJECT_DIR$/src/png2nam/Nametable.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/png2nam/PNG2NAM.java" afterPath="$PROJECT_DIR$/src/png2nam/PNG2NAM.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/png2nam/PaletteManager.java" afterPath="$PROJECT_DIR$/src/png2nam/PaletteManager.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -74,60 +67,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/png2nam/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="16" lean-forward="false" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#639#640#0" expanded="true" />
-                <element signature="e#667#668#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/png2nam/Controller.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="79" column="36" lean-forward="false" selection-start-line="79" selection-start-column="21" selection-end-line="79" selection-end-column="36" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ControllerPopup.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/png2nam/ControllerPopup.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ImgUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/png2nam/ImgUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="16" lean-forward="false" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ChrFile.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ChrFile.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/png2nam/ChrFile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="16" lean-forward="false" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
+            <state relative-caret-position="236">
+              <caret line="34" column="23" lean-forward="true" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#481#492#0" expanded="true" />
@@ -136,12 +80,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ColorUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/png2nam/ColorUtils.java">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/png2nam/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="16" lean-forward="false" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
-              <folding />
+            <state relative-caret-position="567">
+              <caret line="36" column="52" lean-forward="true" selection-start-line="36" selection-start-column="52" selection-end-line="36" selection-end-column="52" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#727#728#0" expanded="true" />
+                <element signature="e#759#760#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -149,8 +98,8 @@
       <file leaf-file-name="home.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/png2nam/home.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="882">
-              <caret line="72" column="44" lean-forward="false" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="44" />
+            <state relative-caret-position="247">
+              <caret line="89" column="16" lean-forward="false" selection-start-line="89" selection-start-column="16" selection-end-line="89" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -159,36 +108,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PNG2NAM.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PNG2NAM.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/png2nam/PNG2NAM.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="614">
-              <caret line="142" column="8" lean-forward="false" selection-start-line="142" selection-start-column="8" selection-end-line="142" selection-end-column="8" />
+            <state relative-caret-position="2021">
+              <caret line="112" column="70" lean-forward="false" selection-start-line="112" selection-start-column="70" selection-end-line="112" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Nametable.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/png2nam/Nametable.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PaletteManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/png2nam/PaletteManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="16" lean-forward="false" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -200,8 +127,8 @@
       <find>handleChooseImage</find>
       <find>showPopup</find>
       <find>exportStatus</find>
-      <find>getT</find>
       <find>addT</find>
+      <find>getT</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -225,15 +152,15 @@
         <option value="$PROJECT_DIR$/src/mypackage/Main.java" />
         <option value="$PROJECT_DIR$/src/png2nam/popup.fxml" />
         <option value="$PROJECT_DIR$/src/png2nam/home.fxml" />
-        <option value="$PROJECT_DIR$/src/png2nam/ChrFile.java" />
         <option value="$PROJECT_DIR$/src/png2nam/ColorUtils.java" />
         <option value="$PROJECT_DIR$/src/png2nam/ControllerPopup.java" />
         <option value="$PROJECT_DIR$/src/png2nam/ImgUtils.java" />
         <option value="$PROJECT_DIR$/src/png2nam/Main.java" />
         <option value="$PROJECT_DIR$/src/png2nam/Nametable.java" />
         <option value="$PROJECT_DIR$/src/png2nam/PaletteManager.java" />
-        <option value="$PROJECT_DIR$/src/png2nam/Controller.java" />
         <option value="$PROJECT_DIR$/src/png2nam/PNG2NAM.java" />
+        <option value="$PROJECT_DIR$/src/png2nam/Controller.java" />
+        <option value="$PROJECT_DIR$/src/png2nam/ChrFile.java" />
       </list>
     </option>
   </component>
@@ -544,6 +471,8 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
+            <element signature="e#727#728#0" expanded="true" />
+            <element signature="e#759#760#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -639,6 +568,8 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
+            <element signature="e#727#728#0" expanded="true" />
+            <element signature="e#759#760#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -694,6 +625,8 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
+            <element signature="e#727#728#0" expanded="true" />
+            <element signature="e#759#760#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -762,6 +695,8 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
+            <element signature="e#727#728#0" expanded="true" />
+            <element signature="e#759#760#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -844,6 +779,8 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
+            <element signature="e#727#728#0" expanded="true" />
+            <element signature="e#759#760#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -872,17 +809,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/png2nam/ChrFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="16" lean-forward="false" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#481#492#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -944,8 +870,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/png2nam/home.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="882">
-          <caret line="72" column="44" lean-forward="false" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="44" />
+        <state relative-caret-position="247">
+          <caret line="89" column="16" lean-forward="false" selection-start-line="89" selection-start-column="16" selection-end-line="89" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -955,21 +881,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/png2nam/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="79" column="36" lean-forward="false" selection-start-line="79" selection-start-column="21" selection-end-line="79" selection-end-column="36" />
+        <state relative-caret-position="567">
+          <caret line="36" column="52" lean-forward="true" selection-start-line="36" selection-start-column="52" selection-end-line="36" selection-end-column="52" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
+            <element signature="e#727#728#0" expanded="true" />
+            <element signature="e#759#760#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/png2nam/PNG2NAM.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="614">
-          <caret line="142" column="8" lean-forward="false" selection-start-line="142" selection-start-column="8" selection-end-line="142" selection-end-column="8" />
+        <state relative-caret-position="2021">
+          <caret line="112" column="70" lean-forward="false" selection-start-line="112" selection-start-column="70" selection-end-line="112" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/png2nam/ChrFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="34" column="23" lean-forward="true" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#481#492#0" expanded="true" />
           </folding>
         </state>
       </provider>

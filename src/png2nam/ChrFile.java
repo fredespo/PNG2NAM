@@ -37,13 +37,13 @@ public class ChrFile
 
 
     //Sets the output CHR file, create a new one if necessary
-    public static void setCHR(String fileName, String dir)
+    public static void setCHR(String fileName, String dir, boolean create)
     {
         outputCHRfile = new File(dir + File.separator + fileName+".chr");
 
         try{
-            outputCHRfile.createNewFile();
-            outputCHRstream = new FileOutputStream(outputCHRfile, false);
+            if(create) outputCHRfile.createNewFile();
+            outputCHRstream = new FileOutputStream(outputCHRfile, !create);
         }catch(IOException e){}
     }
 

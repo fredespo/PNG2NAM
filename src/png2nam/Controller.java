@@ -23,8 +23,16 @@ public class Controller {
     @FXML private Button chrChoose;
     @FXML private Label chrFileDir;
 
+    private static boolean createCHR = true;
+
+    public static boolean isCreateCHR()
+    {
+        return createCHR;
+    }
+
     //Choose input image
     public void handleChooseImage()
+
     {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setInitialDirectory(new File(inputImageName.getText()).getParentFile());
@@ -85,12 +93,14 @@ public class Controller {
     {
         chrChoose.setDisable(false);
         chrFileDir.setOpacity(1.0);
+        createCHR = false;
     }
 
     public void chrCreateOption()
     {
         chrChoose.setDisable(true);
         chrFileDir.setOpacity(0.5);
+        createCHR = true;
     }
 
     public void chooseChr()
