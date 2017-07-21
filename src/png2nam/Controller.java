@@ -35,6 +35,12 @@ public class Controller {
         {
             inputImageName.setText(file.getAbsolutePath());
             if(outputSameAsInput.isSelected()) outputDirectoryName.setText(new File(inputImageName.getText()).getParent());
+            String fileName = new File(inputImageName.getText()).getName();
+            try
+            {
+                exportName.setText(fileName.substring(0,fileName.length()-4));
+            }
+            catch(StringIndexOutOfBoundsException e){}
         }
     }
 
