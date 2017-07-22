@@ -16,9 +16,6 @@ public class ChrFile
     private static ArrayList<int[]> allHexValues;
     private static int numOfTiles = 0;
 
-    private ChrFile(){}
-
-
     public static void Init()
     {
         outputCHRfile = null;

@@ -69,7 +69,7 @@
                 <RadioButton text="Create new CHR" toggleGroup="$chrOption" selected="true" onAction="#chrCreateOption"></RadioButton>
 
                 <HBox spacing="10">
-                    <RadioButton text="Add to existing CHR: " toggleGroup="$chrOption" onAction="#chrAddToOption"></RadioButton>
+                    <RadioButton text="Copy and add to existing CHR: " toggleGroup="$chrOption" onAction="#chrAddToOption"></RadioButton>
                     <Label fx:id="chrFileDir"></Label>
                     <Button text="Choose" disable="true" fx:id="chrChoose" onAction="#chooseChr"> </Button>
                 </HBox>
