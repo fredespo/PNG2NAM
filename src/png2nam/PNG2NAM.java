@@ -75,7 +75,7 @@ public class PNG2NAM
         return true;
     }
 
-    public void StartConversion(String inputImagePath, String outputName, String outputDir)
+    public void StartConversion(String inputImagePath, String outputName, String outputDir, String inputCHR)
     {
         PaletteManager.Init();
         ChrFile.Init();
@@ -105,7 +105,8 @@ public class PNG2NAM
 
         Color[][] metaTile = new Color[16][16];
         Color[][] tile = new Color[8][8];
-        ChrFile.setCHR(outputName, outputDir, Controller.isCreateCHR());
+        if(!Controller.isCreateCHR()) ChrFile.setInputFileCHR(inputCHR);
+        ChrFile.setOutputFileCHR(outputName, outputDir);
         Nametable.setNAM(outputName, outputDir);
         int attr;
         Color[] pal = new Color[4];
@@ -133,6 +134,7 @@ public class PNG2NAM
             }
         }
 
+        ChrFile.exportCHR();
         ChrFile.padCHR();
         Nametable.finalizeNam();
         PaletteManager.exportPalData(outputName, outputDir);

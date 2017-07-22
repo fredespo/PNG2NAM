@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class ChrFile
 {
     private static File outputCHRfile;
+    private static File inputCHRfile;
     private static OutputStream outputCHRstream;
     private static ArrayList<int[]> allHexValues;
     private static int numOfTiles = 0;
@@ -21,35 +22,41 @@ public class ChrFile
     public static void Init()
     {
         outputCHRfile = null;
+        inputCHRfile = null;
         outputCHRstream = null;
         allHexValues = new ArrayList<>();
         numOfTiles = 0;
     }
 
+    public static void setInputFileCHR(String absPath)
+    {
+        inputCHRfile = new File(absPath);
+        importCHR();
+    }
 
     //Sets the output CHR file, create a new one if necessary
-    public static void setCHR(String fileName, String dir, boolean create)
+    public static void setOutputFileCHR(String fileName, String dir)
     {
         outputCHRfile = new File(dir + File.separator + fileName+".chr");
-        if(!create) importCHR();
 
         try{
-            if(create) outputCHRfile.createNewFile();
+            if(outputCHRfile.exists()) outputCHRfile.delete();
+            outputCHRfile.createNewFile();
 
-            outputCHRstream = new FileOutputStream(outputCHRfile, !create);
+            outputCHRstream = new FileOutputStream(outputCHRfile, false);
         }catch(IOException e){}
     }
 
     private static void importCHR()
     {
-        if(outputCHRfile==null) return;
+        if(inputCHRfile==null) return;
 
         FileInputStream inputStream;
         int[] hex;
 
         try
         {
-            inputStream = new FileInputStream(outputCHRfile);
+            inputStream = new FileInputStream(inputCHRfile);
         }
         catch(FileNotFoundException e)
         {
@@ -68,11 +75,18 @@ public class ChrFile
                 {
                     hex[i] = inputStream.read();
                 }
-                allHexValues.add(hex);
-                ++numOfTiles;
+                if(!isHexDuplicate(hex))
+                {
+                    allHexValues.add(hex);
+                    ++numOfTiles;
+                }
             }
         }
         catch(IOException e){}
+
+        try{
+            inputStream.close();
+        }catch(IOException e){}
     }
 
 
@@ -84,7 +98,14 @@ public class ChrFile
 
         numOfTiles++;
         allHexValues.add(hex);
-        writeHexToFile(hex);
+    }
+
+    public static void exportCHR()
+    {
+        for(int[] hex : allHexValues)
+        {
+            writeHexToFile(hex);
+        }
     }
 
     //check if a tile is duplicate based on its hex value

@@ -85,7 +85,7 @@ public class Controller {
     //export files
     public void handleExport()
     {
-        Main.png2nam.StartConversion(inputImageName.getText(), exportName.getText(), outputDirectoryName.getText());
+        Main.png2nam.StartConversion(inputImageName.getText(), exportName.getText(), outputDirectoryName.getText(), chrFileDir.getText());
         exportStatus.setText(Main.png2nam.exportStatus);
     }
 
