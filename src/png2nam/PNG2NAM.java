@@ -14,11 +14,18 @@ public class PNG2NAM
 {
     public Stage PRIMARY_STAGE;
     public Stage POPUP_STAGE;
+    public Stage OVERWRITE_CONFIRM_STAGE;
     public String popupMessage = "";
     public String exportStatus="";
+    public String overwriteMessage="";
     private BufferedImage inputImg;
+    private boolean overwriteConfirmed = false;
 
-    public PNG2NAM(){};
+    public void setOverwriteConfirmed(boolean overwriteConfirmed)
+    {
+        this.overwriteConfirmed = overwriteConfirmed;
+    }
+
     
     public void start(Stage primaryStage) throws Exception
     {
@@ -41,11 +48,27 @@ public class PNG2NAM
         POPUP_STAGE.initOwner(PRIMARY_STAGE);
         POPUP_STAGE.initModality(Modality.APPLICATION_MODAL);
         POPUP_STAGE.setTitle(title);
-        POPUP_STAGE.setScene(new Scene(popup,450,175));
+        POPUP_STAGE.setScene(new Scene(popup,500,250));
         POPUP_STAGE.setAlwaysOnTop(true);
         POPUP_STAGE.requestFocus();
         POPUP_STAGE.setResizable(false);
         POPUP_STAGE.showAndWait();
+    }
+
+    public void showOverwriteConfirm(String title, String txt) throws Exception
+    {
+        overwriteMessage=txt;
+        Parent popup = FXMLLoader.load(getClass().getResource("overwriteConfirm.fxml"));
+
+        OVERWRITE_CONFIRM_STAGE = new Stage();
+        OVERWRITE_CONFIRM_STAGE.initOwner(PRIMARY_STAGE);
+        OVERWRITE_CONFIRM_STAGE.initModality(Modality.APPLICATION_MODAL);
+        OVERWRITE_CONFIRM_STAGE.setTitle(title);
+        OVERWRITE_CONFIRM_STAGE.setScene(new Scene(popup,500,250));
+        OVERWRITE_CONFIRM_STAGE.setAlwaysOnTop(true);
+        OVERWRITE_CONFIRM_STAGE.requestFocus();
+        OVERWRITE_CONFIRM_STAGE.setResizable(false);
+        OVERWRITE_CONFIRM_STAGE.showAndWait();
     }
 
     public boolean checkInputImage(String inputImagePath)
@@ -79,7 +102,7 @@ public class PNG2NAM
 
     public void CHROverwriteConfirm(String filename)
     {
-        try {showPopup("PNG2NAM WARNING","CHR file " + filename + " already exists! Overwrite?");}
+        try {showOverwriteConfirm("PNG2NAM WARNING","CHR file " + filename + ".chr already exists! Overwrite?");}
         catch(Exception e){}
     }
 
@@ -114,7 +137,15 @@ public class PNG2NAM
         Color[][] metaTile = new Color[16][16];
         Color[][] tile = new Color[8][8];
         if(!Controller.isCreateCHR()) ChrFile.setInputFileCHR(inputCHR);
+
+        overwriteConfirmed = false;
         ChrFile.setOutputFileCHR(outputName, outputDir);
+        if(!overwriteConfirmed)
+        {
+            exportStatus="Canceled";
+            return;
+        }
+
         Nametable.setNAM(outputName, outputDir);
         int attr;
         Color[] pal = new Color[4];

@@ -36,6 +36,7 @@ public class ChrFile
     {
         outputCHRfile = new File(dir + File.separator + fileName+".chr");
         if(outputCHRfile.exists()) Main.png2nam.CHROverwriteConfirm(fileName);
+        else Main.png2nam.setOverwriteConfirmed(true);
 
         try{
             if(outputCHRfile.exists()) outputCHRfile.delete();
