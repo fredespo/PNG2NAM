@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class PNG2NAM 
@@ -37,13 +38,14 @@ public class PNG2NAM
         Parent popup = FXMLLoader.load(getClass().getResource("popup.fxml"));
 
         POPUP_STAGE = new Stage();
+        POPUP_STAGE.initOwner(PRIMARY_STAGE);
+        POPUP_STAGE.initModality(Modality.APPLICATION_MODAL);
         POPUP_STAGE.setTitle(title);
         POPUP_STAGE.setScene(new Scene(popup,450,175));
-        PRIMARY_STAGE.hide();
+        POPUP_STAGE.setAlwaysOnTop(true);
         POPUP_STAGE.requestFocus();
         POPUP_STAGE.setResizable(false);
         POPUP_STAGE.showAndWait();
-        PRIMARY_STAGE.show();
     }
 
     public boolean checkInputImage(String inputImagePath)
@@ -73,6 +75,12 @@ public class PNG2NAM
         }
 
         return true;
+    }
+
+    public void CHROverwriteConfirm(String filename)
+    {
+        try {showPopup("PNG2NAM WARNING","CHR file " + filename + " already exists! Overwrite?");}
+        catch(Exception e){}
     }
 
     public void StartConversion(String inputImagePath, String outputName, String outputDir, String inputCHR)

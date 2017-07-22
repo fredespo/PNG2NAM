@@ -35,6 +35,7 @@ public class ChrFile
     public static void setOutputFileCHR(String fileName, String dir)
     {
         outputCHRfile = new File(dir + File.separator + fileName+".chr");
+        if(outputCHRfile.exists()) Main.png2nam.CHROverwriteConfirm(fileName);
 
         try{
             if(outputCHRfile.exists()) outputCHRfile.delete();
