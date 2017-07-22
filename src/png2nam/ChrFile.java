@@ -3,7 +3,6 @@ package png2nam;
 
 import java.awt.*;
 import java.io.*;
-import java.util.Arrays;
 import java.lang.Math;
 import java.util.ArrayList;
 
@@ -13,9 +12,8 @@ public class ChrFile
 {
     private static File outputCHRfile;
     private static OutputStream outputCHRstream;
-    private static ArrayList<Color[][]> tiles = new ArrayList<Color[][]>(0);
+    private static ArrayList<int[]> allHexValues;
     private static int numOfTiles = 0;
-
 
     private ChrFile(){}
 
@@ -24,7 +22,7 @@ public class ChrFile
     {
         outputCHRfile = null;
         outputCHRstream = null;
-        tiles = new ArrayList<Color[][]>(0);
+        allHexValues = new ArrayList<>();
         numOfTiles = 0;
     }
 
@@ -33,23 +31,83 @@ public class ChrFile
     public static void setCHR(String fileName, String dir, boolean create)
     {
         outputCHRfile = new File(dir + File.separator + fileName+".chr");
+        if(!create) importCHR();
 
         try{
             if(create) outputCHRfile.createNewFile();
+
             outputCHRstream = new FileOutputStream(outputCHRfile, !create);
         }catch(IOException e){}
     }
 
+    private static void importCHR()
+    {
+        if(outputCHRfile==null) return;
 
-    //add a tile to the CHR, automatically advances the write position from top to bottom  
+        FileInputStream inputStream;
+        int[] hex;
+
+        try
+        {
+            inputStream = new FileInputStream(outputCHRfile);
+        }
+        catch(FileNotFoundException e)
+        {
+            return;
+        }
+
+        if(inputStream==null) return;
+
+        try{
+
+            while(inputStream.available() > 0)
+            {
+                hex = new int[16];
+
+                for(int i=0; i<16; ++i)
+                {
+                    hex[i] = inputStream.read();
+                }
+                allHexValues.add(hex);
+                ++numOfTiles;
+            }
+        }
+        catch(IOException e){}
+    }
+
+
+    //add a tile to the CHR
     public static void addTile(Color[][] tileData, Color[] palData)
     {
-        if (isTileDuplicate(tileData)) return;
+        int[] hex = getHex(tileData, palData);
+        if(isHexDuplicate(hex)) return;
 
-        tiles.add(tileData);
         numOfTiles++;
+        allHexValues.add(hex);
+        writeHexToFile(hex);
+    }
 
-        addToCHR(tileData, palData);
+    //check if a tile is duplicate based on its hex value
+    private static boolean isHexDuplicate(int[] hex)
+    {
+        for(int i=0; i<allHexValues.size(); ++i)
+        {
+            if(areHexValuesEqual(hex, allHexValues.get(i)))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //check if two tiles are equal based on hex values (16 per tile)
+    private static boolean areHexValuesEqual(int[] hex1, int[] hex2)
+    {
+        for(int j=0; j<16; ++j)
+        {
+            if(hex1[j] != hex2[j]) return  false;
+        }
+        return true;
     }
 
     private static int[] getHex(Color[][] tileData, Color[] palData)
@@ -70,42 +128,6 @@ public class ChrFile
         return values;
     }
 
-    
-    //determine if a tile is already present in the CHR
-    private static boolean isTileDuplicate(Color[][] tileToBeAdded)
-    {
-        for(int i=0; i<numOfTiles; i++)
-        {
-            if(areTilesEqual(tiles.get(i), tileToBeAdded)) return true;
-        }
-
-        return false;
-    }
-
-
-    //Are two given 8x8 blocks equal? (contain the same color pixels in the same order)
-    private static boolean areTilesEqual(Color[][] tile1, Color[][] tile2)
-    {
-        for(int k=0; k<8; k++)
-        {
-            if(!Arrays.equals(tile1[k], tile2[k]))
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
-
-    //add a tile to the hex data (each row in tile gets a hex value representing the pixels)
-    private static void addToCHR(Color[][] tileData, Color[] pal)
-    {
-        addToHex(getHex(tileData,pal));
-    }
-
-
-
-
     //determine which color in the given pal a pixel is using (0-3)
     private static int getColorNum(Color c, Color[] pal)
     {
@@ -122,9 +144,8 @@ public class ChrFile
         return 0;
     }
 
-
     //add a given array of 16 values to the hex data
-    private static void addToHex(int[] valsToAdd)
+    private static void writeHexToFile(int[] valsToAdd)
     {
         for(int valIndex=0; valIndex<16; valIndex++)
         {
@@ -156,11 +177,12 @@ public class ChrFile
     }
 
     //return the tile number corresponding to an 8x8 pixel block
-    public static int getTileNum(Color[][] tileData)
+    public static int getTileNum(Color[][] tileData, Color[] palData)
     {
-        for(int i=0; i<numOfTiles; i++)
+        int[] hex = getHex(tileData, palData);
+        for(int i=0; i<allHexValues.size(); i++)
         {
-            if(areTilesEqual(tiles.get(i), tileData)) return i;
+            if(areHexValuesEqual(allHexValues.get(i), hex)) return i;
         }
 
         return 0;

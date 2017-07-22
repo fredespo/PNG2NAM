@@ -55,9 +55,9 @@ public class Nametable
 
 
     //Add a tile to the Nametable file, automatically advances the write position from top to bottom 
-    public static void addTile(Color[][] tileData, int x, int y)
+    public static void addTile(Color[][] tileData, int x, int y, Color[] palData)
     {
-       int tileNumber = ChrFile.getTileNum(tileData);
+       int tileNumber = ChrFile.getTileNum(tileData, palData);
 
         allTiles[x/8][y/8] = tileNumber;
         numOfTiles++;

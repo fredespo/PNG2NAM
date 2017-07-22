@@ -1,3 +1,4 @@
-Error1: the palette applied to tiles where the columns meet the stairs has the shades of blues reversed from what they should be. 
+Error1(SOLVED): the palette applied to tiles where the columns meet the stairs has the shades of blues reversed from what they should be. 
+*Solved by more accurately detecting if a tile is unique by identifying according to hex value (based on tile and palette). 
 
 Error2: The main yellow-ish color is misrepresented in the palettes.   

@@ -127,7 +127,7 @@ public class PNG2NAM
                         tile = ImgUtils.getBlockOf(metaTile, tileX, tileY, 8, 8);
 
                         ChrFile.addTile(tile, PaletteManager.pals[attr]);
-                        Nametable.addTile(tile, metaTileX+tileX, metaTileY+tileY);
+                        Nametable.addTile(tile, metaTileX+tileX, metaTileY+tileY, PaletteManager.pals[attr]);
                     }
                 }
             }
