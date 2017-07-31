@@ -21,9 +21,18 @@ public class Controller {
     @FXML private Button chooseOutputDir;
     @FXML private Button exportButton;
     @FXML private Button chrChoose;
+    @FXML private Button palChoose;
     @FXML private Label chrFileDir;
+    @FXML private Label palFileDir;
 
     private static boolean createCHR = true;
+
+    public static boolean isCreatePal()
+    {
+        return createPal;
+    }
+
+    private static boolean createPal = true;
 
     public static boolean isCreateCHR()
     {
@@ -85,7 +94,7 @@ public class Controller {
     //export files
     public void handleExport()
     {
-        Main.png2nam.StartConversion(inputImageName.getText(), exportName.getText(), outputDirectoryName.getText(), chrFileDir.getText());
+        Main.png2nam.StartConversion(inputImageName.getText(), exportName.getText(), outputDirectoryName.getText(), chrFileDir.getText(), palFileDir.getText());
         exportStatus.setText(Main.png2nam.exportStatus);
     }
 
@@ -103,6 +112,20 @@ public class Controller {
         createCHR = true;
     }
 
+    public void palCreateOption()
+    {
+        palChoose.setDisable(true);
+        palFileDir.setOpacity(0.5);
+        createPal = true;
+    }
+
+    public void palAddToOption()
+    {
+        palChoose.setDisable(false);
+        palFileDir.setOpacity(1.0);
+        createPal = false;
+    }
+
     public void chooseChr()
     {
         FileChooser fileChooser = new FileChooser();
@@ -117,6 +140,23 @@ public class Controller {
         if(file != null)
         {
             chrFileDir.setText(file.getAbsolutePath());
+        }
+    }
+
+    public void choosePal()
+    {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File(inputImageName.getText()).getParentFile());
+        fileChooser.setTitle("Select Palette");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("PAL", "*.pal")
+        );
+
+        File file = fileChooser.showOpenDialog(Main.png2nam.PRIMARY_STAGE);
+
+        if(file != null)
+        {
+            palFileDir.setText(file.getAbsolutePath());
         }
     }
 }

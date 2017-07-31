@@ -18,13 +18,13 @@
 
             <Label text="Input Image:" style="-fx-font-size: 20px"/>
 
+            <Button text="Browse" onAction="#handleChooseImage"/>
+
             <VBox alignment="center">
                 <Label  fx:id="inputImageName"
                         text="" 
                         maxWidth="500"/>  
-            </VBox>  
-
-            <Button text="Choose" onAction="#handleChooseImage"/>
+            </VBox>
         </HBox>
 
 
@@ -33,13 +33,13 @@
 
                 <Label text="Output Directory:" style="-fx-font-size: 20px"/>
 
+                <Button text="Browse" onAction="#handleChooseOutputDir" fx:id="chooseOutputDir" disable="true"/>
+
                 <VBox alignment="center">
                     <Label fx:id="outputDirectoryName"
                         text=""
                          maxWidth="500"/>
                 </VBox>
-
-                <Button text="Choose" onAction="#handleChooseOutputDir" fx:id="chooseOutputDir" disable="true"/>
 
             </HBox>
 
@@ -70,8 +70,30 @@
 
                 <HBox spacing="10">
                     <RadioButton text="Copy and add to existing CHR: " toggleGroup="$chrOption" onAction="#chrAddToOption"></RadioButton>
+                    <Button text="Browse" disable="true" fx:id="chrChoose" onAction="#chooseChr"> </Button>
                     <Label fx:id="chrFileDir"></Label>
-                    <Button text="Choose" disable="true" fx:id="chrChoose" onAction="#chooseChr"> </Button>
+                </HBox>
+
+            </VBox>
+
+        </HBox>
+
+        <HBox spacing="10">
+
+            <Label text="Palette Data:" style="-fx-font-size: 20px"/>
+
+            <VBox spacing="10">
+                <padding><Insets top="7" right="0" bottom="0" left="0"/></padding>
+                <fx:define>
+                    <ToggleGroup fx:id="palOption"/>
+                </fx:define>
+
+                <RadioButton text="Create new Palette" toggleGroup="$palOption" selected="true" onAction="#palCreateOption"></RadioButton>
+
+                <HBox spacing="10">
+                    <RadioButton text="Copy and add to existing Palette: " toggleGroup="$palOption" onAction="#palAddToOption"></RadioButton>
+                    <Button text="Browse" disable="true" fx:id="palChoose" onAction="#choosePal"> </Button>
+                    <Label fx:id="palFileDir"></Label>
                 </HBox>
 
             </VBox>

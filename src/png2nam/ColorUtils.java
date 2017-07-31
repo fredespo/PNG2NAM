@@ -1,5 +1,6 @@
 package png2nam;
 
+import java.awt.*;
 import java.awt.image.IndexColorModel;
 
 
@@ -32,5 +33,18 @@ public class ColorUtils
         }
 
         return result;
+    }
+
+    public static Color getColor (int colorNum)
+    {
+        int adjustedRed = reds[colorNum];
+        int adjustedGreen = greens[colorNum];
+        int adjustedBlue = blues[colorNum];
+
+        if(adjustedRed < 0) adjustedRed = adjustedRed+256;
+        if(adjustedGreen < 0) adjustedGreen = adjustedGreen+256;
+        if(adjustedBlue < 0) adjustedBlue = adjustedBlue+256;
+
+        return new Color(adjustedRed, adjustedGreen, adjustedBlue);
     }
 }

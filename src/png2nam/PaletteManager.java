@@ -21,6 +21,36 @@ public class PaletteManager
         outputPalStream = null;
     }
 
+    public static void importPaletteData(String file)
+    {
+        FileInputStream inputStream = null;
+        try {inputStream = new FileInputStream(file);}
+        catch(FileNotFoundException e){return;}
+
+        int palNum = 0;
+        int colorNum = 0;
+        int val;
+
+        try
+        {
+            while (inputStream.available() > 0)
+            {
+                val = inputStream.read();
+
+                if(val != 14) pals[palNum][colorNum] = ColorUtils.getColor(val);
+                else pals[palNum][colorNum] = null;
+
+                ++colorNum;
+                if(colorNum > 3)
+                {
+                    colorNum = 0;
+                    ++palNum;
+                }
+            }
+        }
+        catch(IOException e){}
+    }
+
     //Sets the first color of every palette to the most common color in the image
     public static void setMainColor(BufferedImage img)
     {
@@ -111,7 +141,7 @@ public class PaletteManager
 
                 if (c==null)
                 {
-                    valToWrite = 15;
+                    valToWrite = 14;
                     //System.out.println("NULL\t" + Integer.toString(valToWrite));
                 }
                 else

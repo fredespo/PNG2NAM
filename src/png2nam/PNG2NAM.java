@@ -32,7 +32,7 @@ public class PNG2NAM
         Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
         PRIMARY_STAGE = primaryStage;
         primaryStage.setTitle("PNG2NAM");
-        primaryStage.setScene(new Scene(root,1000,470));
+        primaryStage.setScene(new Scene(root,1000,600));
         primaryStage.setResizable(true);
         primaryStage.show();
     }
@@ -106,7 +106,7 @@ public class PNG2NAM
         catch(Exception e){}
     }
 
-    public void StartConversion(String inputImagePath, String outputName, String outputDir, String inputCHR)
+    public void StartConversion(String inputImagePath, String outputName, String outputDir, String inputCHR, String inputPal)
     {
         PaletteManager.Init();
         ChrFile.Init();
@@ -132,7 +132,8 @@ public class PNG2NAM
             return;
         }
 
-        PaletteManager.setMainColor(inputImg);
+        if(Controller.isCreatePal()) PaletteManager.setMainColor(inputImg);
+        else PaletteManager.importPaletteData(inputPal);
 
         Color[][] metaTile = new Color[16][16];
         Color[][] tile = new Color[8][8];
