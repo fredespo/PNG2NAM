@@ -2,5 +2,61 @@
 layout: default
 ---
 
-<h1>PNG2NAM</h1>
-PNG2NAM is a tool for use in NES game development. It can take a PNG input image and convert it to an NES Nametable file (along with the supporting CHR and PAL files). 
+<h1>Recommended Supporting Software</h1>
+<ul>
+    <li>
+        <h2>NES Screen Tool</h2>
+        <a href="https://shiru.untergrund.net/files/nesst.zip"> download </a>
+        Created by <a href="https://shiru.untergrund.net/software.shtml"> Shiru </a> - a tool that allows you to create and edit NES nametables, attributes, palettes, patterns, and metasprites. Used here for viewing and potentially editing the nametable, chr, and pal data produced by PNG2NAM.
+    </li>
+    <li>
+        <h2>YYCHR</h2>
+        <a href="http://www.geocities.jp/yy_6502/yychr/yy-chr20120407_en.zip"> download </a>
+        Created by a Japanese Mario hacker named YY - a tool used to view and edit chr files containing graphics used in game development for certain platforms such as the NES.
+    </li>
+</ul>
+
+<h1>How to Use</h1>
+<h2>Basic Usage</h2>
+<ol>
+    <li>
+        Use PNG2NAM to select an input png image.
+    </li>
+    <li>
+        Select whichever options you'd like.
+    </li>
+    <li>
+        Click the 'Export' button. Three files will then be generated: a CHR, PAL, and NAM file respectively. The NAM file will also automatically open allowing you to see the image as it will appear in your NES game.
+    </li>
+</ol>
+
+<h2>Description of options</h2>
+<ul>
+    <li>
+        CHR: here you can choose to 'create new CHR' or 'copy and add to existing CHR'. Choosing to copy and add to an existing CHR will create a copy of the select CHR file, utilize the existing tiles there, and add any new ones that are necessary. This is useful if you want to have multiple backgrounds depend on the same CHR file.
+    </li>
+
+    <li>
+        PAL: here you can choose to 'create new Palette' or 'copy and add to existing Palette'. Choosing to copy and add to an existing palette will create a copy of the select PAL file, utilize the existing colors there, and add any new ones that are necessary. This is useful if you want to have multiple backgrounds depend on the same PAL file.
+    </li>
+</ul>
+
+<h2>Limitations</h2>
+(the following limitations are due to NES graphics capabilities)
+<ul>
+    <li>
+        The input image must be a 256px by 240px image. This is the default size of backgrounds on the NES.
+    </li>
+    <li>
+        The input image must not contain more than 256 unique tiles (fixed 8px by 8px areas).
+    </li>
+    <li>
+        The input image must not contain more than 4 colors per fixed 16px by 16px area. 
+    </li>
+    <li>
+        The input image must not generate more than 4 palettes (groups of 4 colors used per fixed 16px by 16px area)
+    </li>
+    <li>
+        The input image must not generate palettes that do not share at least one common color among all of them.
+    </li>
+</ul>
