@@ -1,0 +1,132 @@
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.TextField?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.geometry.Insets?>
+<GridPane fx:controller="png2nam.Controller"
+          xmlns:fx="http://javafx.com/fxml" alignment="TOP_LEFT" hgap="10" vgap="10">
+
+    <VBox GridPane.columnIndex="4"
+          GridPane.rowIndex="3"
+          spacing="40">
+
+        <HBox spacing="10">
+
+            <Label text="Input Image:" style="-fx-font-size: 20px"/>
+
+            <Button text="Browse" onAction="#handleChooseImage"/>
+
+            <VBox alignment="center">
+                <Label  fx:id="inputImageName"
+                        text="" 
+                        maxWidth="500"/>  
+            </VBox>
+        </HBox>
+
+
+        <VBox>
+            <HBox spacing="10">
+
+                <Label text="Output Directory:" style="-fx-font-size: 20px"/>
+
+                <Button text="Browse" onAction="#handleChooseOutputDir" fx:id="chooseOutputDir" disable="true"/>
+
+                <VBox alignment="center">
+                    <Label fx:id="outputDirectoryName"
+                        text=""
+                         maxWidth="500"/>
+                </VBox>
+
+            </HBox>
+
+            <CheckBox text="Same as Input Image Directory" fx:id="outputSameAsInput" selected="true" onAction="#handleSetOutputDirectory">
+            </CheckBox>
+        </VBox>
+
+
+        <HBox spacing="10">
+
+            <Label text="Export Name:" style="-fx-font-size: 20px"/>
+            <TextField fx:id="exportName" text=""/>
+
+        </HBox>
+
+
+        <HBox spacing="10">
+
+            <Label text="CHR:" style="-fx-font-size: 20px"/>
+
+            <VBox spacing="10">
+                <padding><Insets top="7" right="0" bottom="0" left="0"/></padding>
+                <fx:define>
+                    <ToggleGroup fx:id="chrOption"/>
+                </fx:define>
+
+                <RadioButton text="Create new CHR" toggleGroup="$chrOption" selected="true" onAction="#chrCreateOption"></RadioButton>
+
+                <HBox spacing="10">
+                    <RadioButton text="Copy and add to existing CHR: " toggleGroup="$chrOption" onAction="#chrAddToOption"></RadioButton>
+                    <Button text="Browse" disable="true" fx:id="chrChoose" onAction="#chooseChr"> </Button>
+                    <Label fx:id="chrFileDir"></Label>
+                </HBox>
+
+            </VBox>
+
+        </HBox>
+
+        <HBox spacing="10">
+
+            <Label text="Palette Data:" style="-fx-font-size: 20px"/>
+
+            <VBox spacing="10">
+                <padding><Insets top="7" right="0" bottom="0" left="0"/></padding>
+                <fx:define>
+                    <ToggleGroup fx:id="palOption"/>
+                </fx:define>
+
+                <RadioButton text="Create new Palette" toggleGroup="$palOption" selected="true" onAction="#palCreateOption"></RadioButton>
+
+                <HBox spacing="10">
+                    <RadioButton text="Copy and add to existing Palette: " toggleGroup="$palOption" onAction="#palAddToOption"></RadioButton>
+                    <Button text="Browse" disable="true" fx:id="palChoose" onAction="#choosePal"> </Button>
+                    <Label fx:id="palFileDir"></Label>
+                </HBox>
+
+            </VBox>
+
+        </HBox>
+
+
+         <VBox>
+
+         <Button text="Export"
+                GridPane.rowIndex="0"
+                GridPane.columnIndex="3"
+                onAction="#handleExport"
+                style="-fx-font-size: 20px"
+                disable="true"
+                fx:id="exportButton"/>
+
+          <HBox>
+              <VBox alignment="center">
+                <Label text="Export Status: "
+                        style="-fx-font-size: 20px"/>
+              </VBox>
+
+             <VBox alignment="center">
+                <Label text="..."
+                        fx:id="exportStatus"/>
+             </VBox>
+          </HBox>
+
+         </VBox>
+
+
+    </VBox>    
+   
+
+</GridPane>
