@@ -1,1 +1,0 @@
-Does not optimize tile count well enough. Tiles have different hex values simply because of inefficient palette arrangment.
